@@ -1,0 +1,15 @@
+/* Table */
+.divstyle{
+    align-items: center;
+    border: black;
+}
+.table {
+    border: black;
+    min-width: 650px;
+    margin-top: 5%;
+    margin-left: 27%;
+  }
+  .tablerow {
+      background-color: darksalmon;
+      font-weight: bolder;
+  }
