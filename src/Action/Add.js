@@ -48,9 +48,9 @@ export const addUserAction = userData => {
                     }
                 };
   return axios
-    .post("/updateRelation", userData)
+    .post("http://localhost:8080/updateRelation", userData,axiosConfig)
     .then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       return res.data;
     })
     .catch(err => {
@@ -63,8 +63,8 @@ export const getAllRelationAction = () =>  {
   return axios
     .get("http://localhost:8080/getAllRelation")
     .then(res => {
-      console.log("aaaaaaaaaaaaaaaaaaaaa");
-      console.log(res.data);
+      
+      // console.log(res.data);
       return res.data;
     })
     .catch(err =>

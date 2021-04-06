@@ -1,3 +1,89 @@
+// import React, { Component } from 'react'
+// import { makeStyles } from '@material-ui/core/styles';
+// import List from '@material-ui/core/List';
+// import ListItem from '@material-ui/core/ListItem';
+// import Divider from '@material-ui/core/Divider';
+// import ListItemText from '@material-ui/core/ListItemText';
+// import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+// import Avatar from '@material-ui/core/Avatar';
+// import Typography from '@material-ui/core/Typography';
+// import './update.css';
+// import * as actions from "../Action/Add";
+
+// export default class Update extends Component {
+//   constructor(props) {
+//         super(props);
+//         this.state = {
+//             AllRelation: [],
+//             Arr:[],
+//             Name : "",
+//       Relation :"",
+//       With : " ",
+      
+//     };
+//   }
+//   var list = [1,2,3];
+//   getAllRelationDetails() {
+//     list =[];
+//     actions.getAllRelationAction().then(relation => {
+//         list = relation;
+//      });
+     
+//   console.log("Arrrrrrrrrrrrrrrrrrr");
+//   console.log(list);
+//   console.log("Arrrrrrrrrrrrrrrrrrr");
+//   }
+
+//   componentDidMount ()
+//   {
+//     this.getAllRelationDetails();
+//     console.log("zzzzzzzzzzzzzzzzzzzzzz");
+//       console.log(this.state);
+//     console.log("zzzzzzzzzzzzzzzzzzzzzz");
+    
+//   }
+
+//   render() {
+//     const { Arr } = this.state;
+//     return (
+//       <div>
+//          <List class="root">
+//          {this.state.Arr.map(listitem => (
+//             <ListItem >
+//               <h1>Hello1</h1>
+//               {listitem}
+//             </ListItem>
+//             ))}
+//             {/* <Divider variant="inset" component="li" /> */}
+//             {/* <ListItem alignItems="flex-start">
+//               <h1>Hello2</h1>
+        
+//             </ListItem> */}
+//           </List>
+//       </div>
+//     )
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React, { Component } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -14,7 +100,9 @@ import UpdateIcon from '@material-ui/icons/Update';
 // import { makeStyles } from '@material-ui/core/styles';
 import { green } from '@material-ui/core/colors';
 import Modal from 'react-modal';
-import * as Window  from "./UpdateWindow";
+import ListItem from '@material-ui/core/ListItem';
+import List from '@material-ui/core/List';
+// import * as Window  from "./UpdateWindow";
 import userValidator from "../Validations/AddUser";
 
 export default class Update extends Component {
@@ -28,75 +116,92 @@ export default class Update extends Component {
             Name : "",
       Relation :"",
       With : " ",
-      rows:[]
+      Arr:[]
     };
     this.handleOpenModal = this.handleOpenModal.bind(this);
     // this.handleCloseModal = this.handleCloseModal.bind(this);
     }
     
     handleOpenModal () {
+     
     this.setState({ showModal: true });
   }
+  onChange = e => {
+    console.log("xxxxxxxxxxx");
+    this.setState({ [e.target.id]: e.target.value});
+    
+    
+  };
+  
 
   // handleCloseModal () {
   //   this.setState({ showModal: false });
   // }
 
-onClick() {
-  console.log("ooooooooooooooooo");
-    Window.UpdateWindow(); 
-  };
+// onClick() {
+//   console.log("ooooooooooooooooo");
+//     Window.UpdateWindow(); 
+//   };
+
+
+  componentDidUpdate(){}
+componentDidMount ()
+{
+    this.getAllRelationDetails();
+    // console.log("zzzzzzzzzzzzzzzzzzzzzzzzzz");
+    // console.log(this.state);
+    // console.log("zzzzzzzzzzzzzzzzzzzzzzzzzz");
+  // this.setState({
+  //   Arr : [this.state.AllRelation.Name]
+  // })
+}
 
 getAllRelationDetails() {
     actions.getAllRelationAction().then(relation => {
       this.setState({
-        AllRelation: relation
+        AllRelation :  relation
       });
      
 
     });
   }
-componentDidMount ()
-{
-    this.getAllRelationDetails();
-  
-}
  
 // update
-onUpdateClick = (_id) => {
-    console.log("llllllllllllllllllllllllllllll");
-    console.log(_id);
-        console.log("llllllllllllllllllllllllllllll");
+// onUpdateClick = (_id) => {
+    // console.log("llllllllllllllllllllllllllllll");
+    // console.log(_id);
+    //     console.log("llllllllllllllllllllllllllllll");
 
-    const updateUser = {
-      _id : _id,
-      Name: this.state.Name,
-      Relation: this.state.Relation,
-      With: this.state.With
-    };
+  //   const updateUser = {
+  //     _id : _id,
+  //     Name: this.state.Name,
+  //     Relation: this.state.Relation,
+  //     With: this.state.With
+  //   };
     
-    var UserData = userValidator({
-      Name: this.state.Name,
-      Relation: this.state.Relation,
-      With: this.state.With
-    });
-    // if(UserData.isValid) {
-    actions.updateRelationAction(updateUser);
-      // alert("Updated sucessfully")
-      // this.props.history.push("/");
-    console.log("qqqqqqqqqqq");
-    // } else {
-    //   this.setState({ errors: UserData.errors });
-    // }
-  };
+  //   // var UserData = userValidator({
+  //   //   Name: this.state.Name,
+  //   //   Relation: this.state.Relation,
+  //   //   With: this.state.With
+  //   // });
+  //   // if(UserData.isValid) {
+  //   actions.updateRelationAction(updateUser);
+  //     // alert("Updated sucessfully")
+  //     // this.props.history.push("/");
+  //   console.log("qqqqqqqqqqq");
+  //   // } else {
+  //   //   this.setState({ errors: UserData.errors });
+  //   // }
+  // };
 
 
     render() {
             const { AllRelation } = this.state;
             const { errors } = this.state;
-            const {rows} = this.state;
+            const {Arr} = this.state;
         return (
-            <TableContainer component={Paper}>
+            <div>
+          <TableContainer component={Paper}>
                 <Table class="table" aria-label="simple table">
                 <TableHead color="pink">
           <TableRow class="tablerow">
@@ -116,8 +221,9 @@ onUpdateClick = (_id) => {
               <TableCell align="center">{row.Name}</TableCell>
               <TableCell align="center">{row.Relation}</TableCell>
               <TableCell align="center">{row.With}</TableCell>
-              <TableCell align="center"><Button color="secondary" onClick={this.onClick}><UpdateIcon color="secondary" />
-              {/* <Modal       
+              <TableCell align="center"><Button color="secondary" onClick={this.handleOpenModal(row._id)}><UpdateIcon color="secondary" />
+              <div>
+              <Modal       
                     isOpen={this.state.showModal}
                     // isClose={this.state.showModel}
                     contentLabel="Inline Styles Modal Example"
@@ -147,9 +253,9 @@ onUpdateClick = (_id) => {
                                 placeholder="Enter Name"
                                 class="form-control"
                               ></input>
-                              <span style={{color:'red' }}>
+                              {/* <span style={{color:'red' }}>
                                     {errors.Name}
-                                  </span>
+                                  </span> */}
                           <h1>is</h1>
                           
                           <input
@@ -163,9 +269,9 @@ onUpdateClick = (_id) => {
                                 placeholder="Enter Relation"
                                 class="form-control"
                               ></input>
-                              <span style={{color:'red' }}>
+                              {/* <span style={{color:'red' }}>
                                     {errors.Relation}
-                                  </span>
+                                  </span> */}
                           <h1>of</h1> 
                           
                           <input
@@ -179,9 +285,134 @@ onUpdateClick = (_id) => {
                                 placeholder="Enter With"
                                 class="form-control"
                               ></input>
-                              <span style={{color:'red' }}>
+                              {/* <span style={{color:'red' }}>
                                     {errors.With}
-                                  </span>
+                                  </span> */}
+                          <div class ="formRoot">
+                          
+                          <Button variant="outlined" color="secondary"  >
+                            Add
+                          </Button>
+                          </div>
+                      </form>
+                  </Modal> </div>
+            </Button></TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+      </div>
+  );
+    }
+}
+
+
+
+
+
+
+//  <List class="root">
+//          {this.state.Arr.map(listitem => (
+//             <ListItem >
+//               <h1>Hello1</h1>
+//               {listitem}
+//             </ListItem>
+//             ))}
+            
+//           </List>
+
+
+// onClick={this.onUpdateClick(row._id)}
+
+
+{/* <TableContainer component={Paper}>
+                <Table class="table" aria-label="simple table">
+                <TableHead color="pink">
+          <TableRow class="tablerow">
+            {/* <TableCell>Dessert (100g serving)</TableCell> 
+            <TableCell align="center" >Name</TableCell>
+            <TableCell align="center" color="pink">Relation</TableCell>
+            <TableCell align="center" color="pink">With whome?</TableCell>
+            <TableCell align="center">Update</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {AllRelation.map((row) => (
+            <TableRow key={row.name}>
+              {/* <TableCell component="th" scope="row">
+                {row.name}
+              </TableCell> 
+              <TableCell align="center">{row.Name}</TableCell>
+              <TableCell align="center">{row.Relation}</TableCell>
+              <TableCell align="center">{row.With}</TableCell>
+              <TableCell align="center"><Button color="secondary" onClick={this.handleOpenModal}><UpdateIcon color="secondary" />
+              <div>
+              <Modal       
+                    isOpen={this.state.showModal}
+                    // isClose={this.state.showModel}
+                    contentLabel="Inline Styles Modal Example"
+                    style={{
+                      overlay: {
+                      backgroundColor: 'papayawhip'
+                      },
+                      content: {
+                        color: 'lightsteelblue'
+                      }
+                    }}
+                    >
+
+                      <form className="root">
+                        <div class="alert">
+                          <Button color="secondary"  onClick={this.handleCloseModal}>X</Button>
+                          </div>
+                        
+                        <input
+                                rows="5"
+                                cols="5"
+                                name="textarea"
+                                id="Name"
+                                onChange={this.onChange}
+                                value={this.state.Name}
+                                type="text"
+                                placeholder="Enter Name"
+                                class="form-control"
+                              ></input>
+                              {/* <span style={{color:'red' }}>
+                                    {errors.Name}
+                                  </span> 
+                          <h1>is</h1>
+                          
+                          <input
+                                rows="5"
+                                cols="5"
+                                name="textarea"
+                                id="Relation"
+                                onChange={this.onChange}
+                                value={this.state.Relation}
+                                type="text"
+                                placeholder="Enter Relation"
+                                class="form-control"
+                              ></input>
+                              {/* <span style={{color:'red' }}>
+                                    {errors.Relation}
+                                  </span> 
+                          <h1>of</h1> 
+                          
+                          <input
+                                rows="5"
+                                cols="5"
+                                name="textarea"
+                                id="With"
+                                onChange={this.onChange}
+                                value={this.state.With}
+                                type="text"
+                                placeholder="Enter With"
+                                class="form-control"
+                              ></input>
+                              {/* <span style={{color:'red' }}>
+                                    {errors.With}
+                                  </span> 
                           <div class ="formRoot">
                           
                           <Button variant="outlined" color="secondary" onClick={this.onUpdateClick(row._id)} >
@@ -189,13 +420,10 @@ onUpdateClick = (_id) => {
                           </Button>
                           </div>
                       </form>
-                  </Modal> */}
+                  </Modal> </div>
             </Button></TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
-    </TableContainer>
-  );
-    }
-}
+    </TableContainer> */}

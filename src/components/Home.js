@@ -41,8 +41,6 @@ export default class Home extends Component {
   onChange = e => {
     console.log("xxxxxxxxxxx");
     this.setState({ [e.target.id]: e.target.value});
-    
-    
   };
   
   //ONSUBMIT ADD
@@ -84,6 +82,13 @@ export default class Home extends Component {
     console.log("qqqqqqqqqqq");
     this.props.history.push("/update");
   };
+
+  // On Show Click
+  onShowClick = () => {
+    console.log("qqqqqqqqqqq");
+    this.props.history.push("/show");
+  };
+
  
   // Render
 
@@ -198,13 +203,13 @@ export default class Home extends Component {
                   onClick={this.onUpdateClick}>Edit User</button>
             </div>
 
-            {/* <div class="container">
+            <div class="container">
                 <img src={`${process.env.PUBLIC_URL}/assets/images/Display.jpg`} alt="show user"></img>
                 <button class="btn"
                   // class="button"
                   type="button"
-                  onClick={this.submit}>Show User</button>
-            </div> */}
+                  onClick={this.onShowClick}>Show User</button>
+            </div> 
             
           </div>
         </div>
