@@ -1,5 +1,6 @@
 {
   "name": "frontend",
+  "homepage": "http://muktamangiraj.github.io/Relationship-Builder",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,6 +12,7 @@
     "axios": "^0.21.1",
     "bootstrap-custom": "^2.1.0",
     "cors": "^2.8.5",
+    "gh-pages": "^3.1.0",
     "is-empty": "^1.2.0",
     "react": "^17.0.2",
     "react-confirm-alert": "^2.7.0",
@@ -23,6 +25,8 @@
     "web-vitals": "^1.1.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
